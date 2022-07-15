@@ -21,7 +21,7 @@ func main() {
 	}
 
 	// Sort slice
-	BubbleSort(&inputSlice)
+	BubbleSort(inputSlice)
 
 	// Print slice
 	fmt.Println(intSliceToString(inputSlice))
@@ -34,25 +34,21 @@ func intSliceToString(inputSlice []int) (result string) {
 	return
 }
 
-func BubbleSort(intSlice *[]int) {
+func BubbleSort(intSlice []int) {
 	// Get slice length
-	len := len(*intSlice)
+	len := len(intSlice)
 
 	// Sort slice
 	for i := 0; i < len-1; i++ {
 		for j := 0; j < len-i-1; j++ {
-			if (*intSlice)[j] > (*intSlice)[j+1] {
+			if (intSlice)[j] > (intSlice)[j+1] {
 				Swap(intSlice, j)
 			}
 		}
 	}
 }
 
-func Swap(intSlice *[]int, index int) {
+func Swap(intSlice []int, index int) {
 	// Make copy of dereferenced intSlice
-	tempSlice := *intSlice
-	tempSlice[index], tempSlice[index+1] = tempSlice[index+1], tempSlice[index]
-
-	// Update pointer value
-	*intSlice = tempSlice
+	intSlice[index], intSlice[index+1] = intSlice[index+1], intSlice[index]
 }
